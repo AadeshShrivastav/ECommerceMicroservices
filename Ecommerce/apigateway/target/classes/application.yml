@@ -1,0 +1,47 @@
+
+
+
+server:
+  port: 8090
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: user-service-public
+          uri: http://localhost:8091
+          predicates:
+            - Path=/api/auth/**
+
+        - id: user-service-secure
+          uri: http://localhost:8091
+          predicates:
+            - Path=/api/secure/**
+
+
+
+#        - id: product-service
+#          uri: lb://PRODUCT-SERVICE
+#          predicates:
+#            - Path=/api/products/**
+#
+#        - id: order-service
+#          uri: lb://ORDER-SERVICE
+#          predicates:
+#            - Path=/api/orders/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  # Correcting key name from "eureka-service-url"
+    register-with-eureka: true
+    fetch-registry: true
+
+eureka.instance:
+  prefer-ip-address: true

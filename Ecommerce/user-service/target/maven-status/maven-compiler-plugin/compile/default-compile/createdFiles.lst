@@ -1,0 +1,5 @@
+com\user_service\user_service\security\JwtTokenProvider.class
+com\user_service\user_service\model\User.class
+com\user_service\user_service\repository\UserRepository.class
+com\user_service\user_service\UserServiceApplication.class
+com\user_service\user_service\model\User$UserBuilder.class
